@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="slider.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header><img style="height: 50px; margin-right: 10px;" src="images.png" alt="">TV SHOWS</header>
+    <form id="form">
+        <input id="search" type="text" autocomplete="off" placeholder="Search for a TV show">
+        <button id="but" type="submit"><i class='bx bx-search-alt-2'></i></button>
+      
+    </form>
+    <div id="moviecontainer">
+
+       <div class="popular">
+           <h3>Popular Movies</h3>
+           
+           <i data-dir="left" class='bx bxs-left-arrow'></i>
+           <div class="popularmov">
+        </div>
+        <i data-dir="right" class='bx bxs-right-arrow'></i>
+           
+       </div>
+       <div class="horror">
+        <h3>Horror Movies</h3>
+        <i data-dir="left" class='bx bxs-left-arrow'></i>
+        <div class="horrormov">
+        </div>
+        <i data-dir="right" class='bx bxs-right-arrow'></i>
+       </div>
+       <div class="action">
+        <h3>Action Movies</h3>
+        <i data-dir="left" class='bx bxs-left-arrow'></i>
+        <div class="actionmov">
+        </div>
+        <i data-dir="right" class='bx bxs-right-arrow'></i>
+       </div>
+       <div class="comedy">
+        <h3>Comedy Movies</h3>
+        <i data-dir="left" class='bx bxs-left-arrow'></i>
+        <div class="commov">
+        </div>
+        <i data-dir=  "right" class='bx bxs-right-arrow'></i>
+       </div>
+    </div>
+    <script src="search.js"></script>
+    <script src="slider.js"></script>
+</body>
+
+</html>

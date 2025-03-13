@@ -1,0 +1,98 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+header {
+    position: relative;
+    font-size: 50px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    width: 100%;
+
+}
+
+form {
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    display: flex;
+    gap: 10px;
+    margin-right: 15px;
+}
+
+input {
+    position: relative;
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    outline: none;
+}
+
+button {
+    position: absolute;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    top: 2px;
+    right: 0;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+.movie-card {
+    margin-top: 30px;
+    width: 230px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.movie-card:hover {
+    transform: scale(1.1);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.movie-card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.movie-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+#moviecontainer {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
