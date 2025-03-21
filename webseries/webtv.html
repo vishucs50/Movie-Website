@@ -1,61 +1,86 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Shows</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TV Shows</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        
+        
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="slider.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
 
     </style>
 </head>
 
 <body>
-    <header><img style="height: 50px; margin-right: 10px;" src="images.png" alt="">TV SHOWS</header>
-    <form id="form">
-        <input id="search" type="text" autocomplete="off" placeholder="Search for a TV show">
-        <button id="but" type="submit"><i class='bx bx-search-alt-2'></i></button>
-      
-    </form>
+    <header>
+        <div class="navbar">
+            <h1 class="logo">ScreenScape</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" onclick="loadPage('home')">Home</a></li>
+                    <li><a href="#popular" onclick="loadPage('popular')">Popular</a></li>
+                    <li><a href="#genres" onclick="loadPage('genres')">Genres</a></li>
+                    <li><a href="#">Trending</a></li>
+                    <li><a href="#contact" onclick="loadPage('contact')">Contact</a></li>
+                </ul>
+            </nav>
+    
+            <!-- Search Form -->
+            <form id="form">
+                <input id="search" type="text" autocomplete="off" placeholder="Search Movie">
+                <button id="but" type="submit"><i class='bx bx-search-alt-2'></i></button>  
+            </form>
+    
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Toggle navigation">
+                ☰
+            </button>
+        </div>
+    </header>
+    
     <div id="moviecontainer">
-
-       <div class="popular">
-           <h3>Popular Movies</h3>
-           
-           <i data-dir="left" class='bx bxs-left-arrow'></i>
-           <div class="popularmov">
+        
+        <div class="popular">
+            <h3>Popular Movies</h3>
+            
+            <i data-dir="left" class='bx bxs-left-arrow'></i>
+            <div class="popularmov">
+            </div>
+            <i data-dir="right" class='bx bxs-right-arrow'></i>
+            
         </div>
-        <i data-dir="right" class='bx bxs-right-arrow'></i>
-           
-       </div>
-       <div class="horror">
-        <h3>Horror Movies</h3>
-        <i data-dir="left" class='bx bxs-left-arrow'></i>
-        <div class="horrormov">
+        <div class="horror">
+            <h3>Horror Movies</h3>
+            <i data-dir="left" class='bx bxs-left-arrow'></i>
+            <div class="horrormov">
+            </div>
+            <i data-dir="right" class='bx bxs-right-arrow'></i>
         </div>
-        <i data-dir="right" class='bx bxs-right-arrow'></i>
-       </div>
-       <div class="action">
+    <div class="action">
         <h3>Action Movies</h3>
         <i data-dir="left" class='bx bxs-left-arrow'></i>
         <div class="actionmov">
         </div>
         <i data-dir="right" class='bx bxs-right-arrow'></i>
-       </div>
-       <div class="comedy">
+    </div>
+    <div class="comedy">
         <h3>Comedy Movies</h3>
         <i data-dir="left" class='bx bxs-left-arrow'></i>
         <div class="commov">
         </div>
         <i data-dir=  "right" class='bx bxs-right-arrow'></i>
-       </div>
     </div>
-    <script src="search.js"></script>
-    <script src="slider.js"></script>
+</div>
+    <script  src="search.js"></script>
+    <script id="dynamic-script" src="slider.js"></script>   
+    <script src="switch.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,9 @@
-
+*{
+    font-family: "Poppins";
+}
+h3{
+    color: white;
+}
 .popular,.horror,.action,.comedy {
     width: 100%;
     display: flex;
@@ -26,39 +31,69 @@
 
 
 .movie, .hr, .ac, .cmd {
+    
+    position: relative;
     height: 100%;
-    width: 200px;
+    width: 200px; 
     flex: 0 0 auto;
     border-radius: 10px;
     overflow: hidden; /* Prevents content from overflowing */
     background-color: black;
-    transition: transform 0.4s ease-in-out, width 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
-    position: relative;
+    transition:  width 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.boxadd{
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+    font-weight: 400;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    animation: visible 0.4s;
+    white-space: pre-line;
+}
+@keyframes visible {
+   from{
+    opacity: 0;
+   } 
+   to{
+    opacity: 1;
+   }
+}
+.movie:hover .boxadd,.hr:hover .boxadd,.ac:hover .boxadd,.cmd:hover .boxadd{
+    opacity: 1;
 }
 
 .movie img, .hr img, .ac img, .cmd img {
-    width: 100%;
+    width: 200px;
     height: 100%;
     border-radius: 10px;
+    transition: width 0.4s ease-in-out;
 }
 
 .movie:hover, .hr:hover, .ac:hover, .cmd:hover {
-    transform: scale(1.3); 
-    width: 250px;
-    transform-origin: center;
+    transform: scale(1.02); 
+    width: 350px;
+    transform-origin: left;
     z-index: 3;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 30px rgba(255, 165, 0, 0.6);
 }
 
 .movie:hover img, .hr:hover img, .ac:hover img, .cmd:hover img {
-    width: 50%;
+    width: 200px;
+    border-radius: 0 10px 10px 0;
 }
 
 .movie::after, .hr::after, .ac::after, .cmd::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.05);
+    background:rgba(0, 0, 0, 0.4);  ;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }

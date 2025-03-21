@@ -7,7 +7,6 @@ let popular=async()=>{
         let data=await response.json();
         console.log(data);
         let popular=document.querySelector('.popularmov')
-        arr=data.results[data.results.length-1];
         data.results.forEach(movie => {
             if (movie.poster_path) {
                 let imgSrc = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -15,7 +14,7 @@ let popular=async()=>{
                 let div = document.createElement('div');
                 div.classList.add('movie');
                 
-                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster">`;
+                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster"   data-rating="${movie.vote_average}" data-title="${movie.title}" data-overview="${movie.overview}">`;
                 
                 popular.appendChild(div);
             }
@@ -45,8 +44,8 @@ let byid=async(genreId,container,card)=>{
                 let div = document.createElement('div');
                 div.classList.add(`${card}`);
                 
-                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster">`;
-                
+                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-rating="${movie.vote_average}" data-title="${movie.original_title}" data-overview="${movie.overview}">`;
+                // console.log(div)
                 horror.appendChild(div);
             }
         });
@@ -57,39 +56,86 @@ let byid=async(genreId,container,card)=>{
         console.log(e);
     }
 }
+
 popular()
 byid(27,"horrormov","hr")
 byid(28,"actionmov","ac")
-byid(35,"commov","cmd")
+byid(35,"commov","cmd") 
+document.body.addEventListener("mouseenter", (event) => {
+    if (event.target.classList.contains("movie") || event.target.classList.contains("hr") || event.target.classList.contains("ac")||event.target.classList.contains("cmd")) {
+        if (!event.target.querySelector('.boxadd')) {
+            let current = event.target;
+            let image_current = current.querySelector("img");
+            // console.log(image_current)
+            let title = image_current.dataset.title;
+            let overview = image_current.dataset.overview;
+            let rating=image_current.dataset.rating;
+            // console.log(id);
+            // console.log(current);
+            let div = document.createElement('div');
+            console.log(div);
+            
+            div.classList.add('boxadd');
+           
+            let imdbLogo = "https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"; 
+            div.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <h3 style="margin-bottom: 20px ;">${title}</h3>  
+                
+                <h4 style="display: flex; align-items: center; gap: 8px; justify-content: center;"> 
+                    <img src="${imdbLogo}" style="height: 20px; width: auto; display: block;" alt="IMDb Logo"> 
+                    <span style="font-size: 16px; font-weight: bold;">${Math.round(rating * 10) / 10}</span>
+                </h4>       
+            </div>
+        `;
+        
+        
+        event.target.appendChild(div);
+        
+
+        }
+    }
+}, true);   
+document.body.addEventListener("mouseleave", (event) => {
+    if (event.target.classList.contains("movie") || event.target.classList.contains("hr")|| event.target.classList.contains("ac")||event.target.classList.contains("cmd")) {
+        let div = event.target.querySelector('.boxadd');
+        if (div) div.remove();
+    }
+}, true);
+
+
+
 
 //for movement of movie carousel
-let main=document.querySelectorAll('.movie');
-let last=main[main.length-1];
-if (lastElement) {
-    let position = parseInt(getComputedStyle(lastElement).left, 10) || 0;
-    console.log("Current Position:", position);
-}
-document.querySelectorAll('[data-dir="right"]').forEach((container) => {
-        console.log()
-        container.onclick = () => {
-            let cur = parseInt(getComputedStyle(container.previousElementSibling).left, 10) || 0;
-            let position =cur- 210;
-            container.previousElementSibling.style.left = position + "px";
-            console.log(cur);
-        };
-    });
-    document.querySelectorAll('[data-dir="left"]').forEach((container) => {    
-        container.onclick = () => {
-            let cur = parseInt(getComputedStyle(container.nextElementSibling).left, 10) || 0;
-            
-                let position=cur+ 210;
-                if(position>-150&& position<-80){
-                    container.nextElementSibling.style.left = 0 + "px";
-                }
-                else if(position<0){
-                container.nextElementSibling.style.left = position + "px";
+document.querySelectorAll('[data-dir="right"]').forEach((btn) => {
+    btn.onclick = () => {
+        let container = btn.previousElementSibling; // The movie list div
+        let curLeft = parseInt(getComputedStyle(container).left, 10) || 0;
+        let maxLeft = container.scrollWidth - container.offsetWidth; // Max scrollable width
+
+        // Stop scrolling if already at max
+        if (Math.abs(curLeft) < maxLeft) {
+            let newLeft = curLeft - 200;
+            if (Math.abs(newLeft) > maxLeft) {
+                newLeft = -maxLeft; // Stop at last element
             }
-        };
-    });
+            container.style.left = newLeft + "px";
+        }
+    };
+});
 
+document.querySelectorAll('[data-dir="left"]').forEach((btn) => {
+    btn.onclick = () => {
+        let container = btn.nextElementSibling; // The movie list div
+        let curLeft = parseInt(getComputedStyle(container).left, 10) || 0;
 
+        // Stop scrolling if already at start
+        if (curLeft < 0) {
+            let newLeft = curLeft + 200;
+            if (newLeft > 0) {
+                newLeft = 0; // Reset to start
+            }
+            container.style.left = newLeft + "px";
+        }
+    };
+});
