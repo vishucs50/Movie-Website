@@ -47,5 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.classList.toggle("toggle");
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const themeDropdown = document.querySelector("theme-dropdown");
+    const themeLink = document.querySelector("li > a");
+
+    themeLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        themeDropdown.classList.toggle("show"); // Toggle dropdown visibility
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!themeLink.contains(event.target) && !themeDropdown.contains(event.target)) {
+            themeDropdown.classList.remove("show");
+        }
+    });
+});
 
 

@@ -118,8 +118,9 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     position: absolute;
-    top: 60px;
+    top: 130px;
     right: 0;
+    z-index: 100;
     background: black;
     width: 100%;
     padding: 10px;
@@ -128,7 +129,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    pointer-events: none; /* Prevent interaction when hidden */
+    pointer-events: none;/* Prevent interaction when hidden*/
 }
 
 /* Show when active */
@@ -143,6 +144,7 @@ body {
     display: block;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    z-index: 101;
 }
 
 .hamburger.toggle {
@@ -162,6 +164,9 @@ body {
 
     #but {
         padding: 6px 10px;
+    }
+    .theme-dropdown{
+        right: 0;
     }
 }
 
@@ -224,3 +229,84 @@ body {
         scale: 1;
     }
 }
+
+.theme-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Dropdown Menu for theme */
+.theme-dropdown {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: #111;
+    box-shadow: 0px 4px 10px rgba(255, 140, 0, 0.5); 
+    padding: 10px;
+    min-width: 150px;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    border-radius: 8px;
+    border: 2px solid #ff8c00; 
+    
+    
+    transform: scaleY(0);
+    transform-origin: top left;  
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0.2s;
+}
+
+
+.theme-container:hover .theme-dropdown {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+}
+@media (max-width:768px) {
+    .theme-dropdown{
+        top: 100%;
+        left: 0;
+    }
+}
+
+/* Dropdown Buttons */
+.theme-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #222; 
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ff9800;
+    border-radius: 5px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Glow effect with different colors on hover */
+.theme-dropdown button:hover {
+    background-color: inherit;
+    box-shadow: 0px 0px 10px currentColor;
+}
+
+.theme-container a i {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+}
+
+.theme-container a:hover #arrow {
+    transform: rotate(180deg);
+}
+
+.theme-dropdown button:nth-child(1):hover { box-shadow: 0px 0px 10px red; color: red; }
+.theme-dropdown button:nth-child(2):hover { box-shadow: 0px 0px 10px blue; color: blue; }
+.theme-dropdown button:nth-child(3):hover { box-shadow: 0px 0px 10px purple; color: purple;}
+.theme-dropdown button:nth-child(4):hover { box-shadow: 0px 0px 10px #ff9800; color: #ff9800;}
+
+
