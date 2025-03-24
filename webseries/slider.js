@@ -13,7 +13,6 @@ let popular=async()=>{
                 
                 let div = document.createElement('div');
                 div.classList.add('movie');
-                
                 div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster"   data-rating="${movie.vote_average}" data-title="${movie.title}" data-overview="${movie.overview}">`;
                 
                 popular.appendChild(div);
@@ -43,7 +42,7 @@ let byid=async(genreId,container,card)=>{
                 
                 let div = document.createElement('div');
                 div.classList.add(`${card}`);
-                
+                div.setAttribute('data-color','glow');
                 div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-rating="${movie.vote_average}" data-title="${movie.original_title}" data-overview="${movie.overview}">`;
                 // console.log(div)
                 horror.appendChild(div);

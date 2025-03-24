@@ -21,15 +21,16 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#home" onclick="loadPage('home')">Home</a></li>
-                    <li><a href="#">Popular</a></li>
+                    <li><a href="#popular" onclick="loadPage('popular')">Popular</a></li>
                     <li><a href="#">Genres</a></li>
                     <li class="theme-container">
                         <a href="#">Themes <i id="arrow" class='bx bx-chevron-down'></i></a>
-                        <div class="theme-dropdown">
-                            <button onclick="changeTheme('red')">Red</button>
-                            <button onclick="changeTheme('blue')">Blue</button>
-                            <button onclick="changeTheme('purple')">Purple</button>
-                            <button onclick="changeTheme('orange')">Orange</button>
+                        <div class="theme-dropdown" data-color="glow">
+                            
+                            <button onclick="changeGlowColor('glow-orange')">Orange</button>
+                            <button onclick="changeGlowColor('glow-lightblue')">Blue</button>
+                            <button onclick="changeGlowColor('glow-purple')">Purple</button>
+                            <button onclick="changeGlowColor('glow-red')">Red</button>
                         </div>
                     </li>
                     <li><a href="#contact" onclick="loadPage('contact')">Contact</a></li>
@@ -38,8 +39,8 @@
 
             <!-- Search Form -->
             <form id="form">
-                <input id="search" type="text" autocomplete="off" placeholder="Search Movie">
-                <button id="but" type="submit"><i class='bx bx-search-alt-2'></i></button>  
+                <input id="search"  type="text" autocomplete="off" placeholder="Search Movie">
+                <button id="but"  type="submit"><i class='bx bx-search-alt-2'></i></button>  
             </form>
 
             <!-- Hamburger Button -->
@@ -78,6 +79,7 @@
 
     <script  src="search.js"></script>
     <script src="switch.js"></script>
+    <script src="theme.js"></script>
    
 </body>
 </html>

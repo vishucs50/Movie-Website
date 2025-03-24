@@ -9,7 +9,7 @@ form.addEventListener("submit", function (e) {
     webseries(searchBox.value)
 
 })
-//for fetching data
+
 
 let webseries = async (name) => {
     let res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=b2c8d6ce056bc1d972d350c0806bcd68&query=${name}`);
@@ -28,7 +28,7 @@ let webseries = async (name) => {
             div.classList.add('movie-card')
             div.innerHTML = `
                         <img src="${imgSrc}" alt="Movie Poster">
-                        <h2>"${item.title}"</h2>
+                        <h2 data-color="glow">"${item.title}"</h2>
                         <p>⭐ IMDB: ${item.vote_average ? item.vote_average : "N/A"}</p>                
         `
             moviecontainer.appendChild(div);
@@ -47,21 +47,25 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.classList.toggle("toggle");
     });
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const themeDropdown = document.querySelector("theme-dropdown");
-    const themeLink = document.querySelector("li > a");
+    document.addEventListener("DOMContentLoaded", () => {
+        const themeDropdown = document.querySelector(".theme-dropdown"); 
+        const themeLink = document.querySelector(".theme-toggle"); 
 
-    themeLink.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        themeDropdown.classList.toggle("show"); // Toggle dropdown visibility
-    });
+        if (themeLink && themeDropdown) {
+            themeLink.addEventListener("click", (event) => {
+                event.preventDefault();
+                themeDropdown.classList.toggle("show");
+            });
 
-    // Close dropdown when clicking outside
-    document.addEventListener("click", (event) => {
-        if (!themeLink.contains(event.target) && !themeDropdown.contains(event.target)) {
-            themeDropdown.classList.remove("show");
+            document.addEventListener("click", (event) => {
+                if (!themeLink.contains(event.target) && !themeDropdown.contains(event.target)) {
+                    themeDropdown.classList.remove("show");
+                }
+            });
+        } else {
+            console.error("Theme button or dropdown not found! Check the selectors.");
         }
     });
-});
+
 
 
