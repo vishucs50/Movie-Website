@@ -19,17 +19,17 @@ let webseries = async (name) => {
         moviecontainer.innerHTML = '<h1>No results found</h1>';
         return;
     }
-    data.results.forEach(item => {
+    data.results.forEach(movie => {
         
-        if (item.poster_path) {
-            let imgSrc = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
+        if (movie.poster_path) {
+            let imgSrc = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             let div = document.createElement('div');
             div.classList.add('movie-card')
             div.setAttribute('data-genre','doubleclick');
             div.innerHTML = `
-                        <img src="${imgSrc}" alt="Movie Poster">
-                        <h2 data-color="glow">"${item.title}"</h2>
-                        <p>⭐ IMDB: ${item.vote_average ? item.vote_average : "N/A"}</p>                
+                        <img src="${imgSrc}" data-id="${movie.id}" alt="Movie Poster">
+                        <h2 data-color="glow">"${movie.title}"</h2>
+                        <p>⭐ IMDB: ${movie.vote_average ? movie.vote_average : "N/A"}</p>                
         `
             moviecontainer.appendChild(div);
         }
