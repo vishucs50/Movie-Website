@@ -44,7 +44,7 @@ let byid=async(genreId,container,card)=>{
                 let div = document.createElement('div');
                 div.classList.add(`${card}`);
                 div.setAttribute('data-genre','card');
-                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-rating="${movie.vote_average}" data-title="${movie.original_title}" data-overview="${movie.overview}"   data-poster="${movie.poster_path}">`;
+                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-id="${movie.id}" data-rating="${movie.vote_average}" data-title="${movie.original_title}" data-overview="${movie.overview}"   data-poster="${movie.poster_path}">`;
                 // console.log(div)
                 horror.appendChild(div);
             }

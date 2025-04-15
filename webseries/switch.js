@@ -15,7 +15,6 @@ function handleHashChange() {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=b2c8d6ce056bc1d972d350c0806bcd68`)
         .then((response) => response.json())
         .then((movie) => {
-            // Fetch YouTube trailer
             fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=b2c8d6ce056bc1d972d350c0806bcd68`)
                 .then((videoResponse) => videoResponse.json())
                 .then((videoData) => {
@@ -24,7 +23,6 @@ function handleHashChange() {
                         (video) => video.site === "YouTube" && video.type === "Trailer"
                     );
 
-                    // Add YouTube iframe if a trailer is found
                     const youtubeIframe = trailer
                         ? `
                             <iframe
@@ -49,7 +47,7 @@ function handleHashChange() {
                                 <p><strong>Year:</strong> ${movie.release_date.split("-")[0]}</p>
                                 <p>${movie.overview}</p>
                                 <div class="youtube-section">
-                                    <h2>Watch Trailer</h2>
+                                    <h2 style="color:white">Watch Trailer</h2>
                                     ${youtubeIframe}
                                 </div>
                             </div>
@@ -220,19 +218,7 @@ document.body.addEventListener("dblclick", (event) => {
   let img = card.querySelector("img");
   if (!img) return;
 
-  // Extract movie details from data attributes
-  const movieData = {
-    id: img.dataset.id, // Ensure this is set
-    title: img.dataset.title,
-    overview: img.dataset.overview,
-    poster_path: img.dataset.poster,
-  };
-
-  // Store the movie data for the details page
-  sessionStorage.setItem("currentMovie", JSON.stringify(movieData));
-
-  // Navigate to the detail page using the movie ID
-  loadPage(`details-${movieData.id}`);
+  loadPage(`details-${img.dataset.id}`);
 });
 document.body.addEventListener("dblclick", (event) => {
   let card = event.target.closest('[data-genre="card"]');
@@ -240,20 +226,8 @@ document.body.addEventListener("dblclick", (event) => {
 
   let img = card.querySelector("img");
   if (!img) return;
-
-  // Extract movie details from data attributes
-  const movieData = {
-    id: img.dataset.id, // Ensure this is set
-    title: img.dataset.title,
-    overview: img.dataset.overview,
-    poster_path: img.dataset.poster,
-  };
-
-  // Store the movie data for the details page
-  sessionStorage.setItem("currentMovie", JSON.stringify(movieData));
-
-  // Navigate to the detail page using the movie ID
-  loadPage(`details-${movieData.id}`);
+  
+  loadPage(`details-${img.dataset.id}`);
 });
 
 // Run on hash change and initial load
