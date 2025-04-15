@@ -1,6 +1,6 @@
-let popularjs = async () => {
+let genrejs = async (id) => {
     try {
-        let response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=b2c8d6ce056bc1d972d350c0806bcd68');
+        let response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b2c8d6ce056bc1d972d350c0806bcd68&with_genres=${id}`);
         let data = await response.json();
         console.log("Fetched Popular Movies:", data);
 
@@ -29,6 +29,5 @@ let popularjs = async () => {
         console.error("Error fetching popular movies:", e);
     }
 };
-
 
 

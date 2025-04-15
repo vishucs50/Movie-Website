@@ -1,4 +1,3 @@
-
 let popular=async()=>{
     try
     {
@@ -13,7 +12,9 @@ let popular=async()=>{
                 
                 let div = document.createElement('div');
                 div.classList.add('movie');
-                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster"   data-rating="${movie.vote_average}" data-title="${movie.title}" data-overview="${movie.overview}">`;
+                div.setAttribute('data-genre','card');
+
+                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-id="${movie.id}" data-rating="${movie.vote_average}" data-title="${movie.title}" data-overview="${movie.overview}" data-poster="${movie.poster_path}">`;
                 
                 popular.appendChild(div);
             }
@@ -34,7 +35,7 @@ let byid=async(genreId,container,card)=>{
         let response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b2c8d6ce056bc1d972d350c0806bcd68&with_genres=${genreId}`);
         let data = await response.json();
         
-        console.log(data);
+        console.log(data.results);
         let horror=document.querySelector(`.${container}`)
         data.results.forEach(movie => {
             if (movie.poster_path) {
@@ -42,8 +43,8 @@ let byid=async(genreId,container,card)=>{
                 
                 let div = document.createElement('div');
                 div.classList.add(`${card}`);
-                div.setAttribute('data-color','glow');
-                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-rating="${movie.vote_average}" data-title="${movie.original_title}" data-overview="${movie.overview}">`;
+                div.setAttribute('data-genre','card');
+                div.innerHTML = `<img src="${imgSrc}" alt="Movie Poster" data-rating="${movie.vote_average}" data-title="${movie.original_title}" data-overview="${movie.overview}"   data-poster="${movie.poster_path}">`;
                 // console.log(div)
                 horror.appendChild(div);
             }
@@ -60,8 +61,10 @@ popular()
 byid(27,"horrormov","hr")
 byid(28,"actionmov","ac")
 byid(35,"commov","cmd") 
+byid(16,"animov","amv")
+byid(878,"scifi","sc")
 document.body.addEventListener("mouseenter", (event) => {
-    if (event.target.classList.contains("movie") || event.target.classList.contains("hr") || event.target.classList.contains("ac")||event.target.classList.contains("cmd")) {
+    if (event.target.dataset.genre === "card")  {
         if (!event.target.querySelector('.boxadd')) {
             let current = event.target;
             let image_current = current.querySelector("img");
@@ -96,14 +99,11 @@ document.body.addEventListener("mouseenter", (event) => {
     }
 }, true);   
 document.body.addEventListener("mouseleave", (event) => {
-    if (event.target.classList.contains("movie") || event.target.classList.contains("hr")|| event.target.classList.contains("ac")||event.target.classList.contains("cmd")) {
+    if (event.target.dataset.genre === "card") {
         let div = event.target.querySelector('.boxadd');
         if (div) div.remove();
     }
 }, true);
-
-
-
 
 //for movement of movie carousel
 document.querySelectorAll('[data-dir="right"]').forEach((btn) => {

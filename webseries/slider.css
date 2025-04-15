@@ -4,7 +4,7 @@
 h3{
     color: white;
 }
-.popular,.horror,.action,.comedy {
+[data-genre="inner box"] {
     width: 100%;
     display: flex;
     justify-content: flex-start; 
@@ -14,7 +14,7 @@ h3{
     position: relative;
 }
 
-.popularmov ,.horrormov,.actionmov,.commov{
+[data-genre="movie-list"]{
     position: absolute;
     width: 98.5%;
     height: 250px;
@@ -30,7 +30,7 @@ h3{
 }
 
 
-.movie, .hr, .ac, .cmd {
+[data-genre="card"] {
     
     position: relative;
     height: 100%;
@@ -65,30 +65,30 @@ h3{
     opacity: 1;
    }
 }
-.movie:hover .boxadd,.hr:hover .boxadd,.ac:hover .boxadd,.cmd:hover .boxadd{
+[data-genre="card"]:hover .boxadd{
     opacity: 1;
 }
 
-.movie img, .hr img, .ac img, .cmd img {
+[data-genre="card"] img {
     width: 200px;
     height: 100%;
     border-radius: 10px;
     transition: width 0.4s ease-in-out;
 }
 
-.movie:hover, .hr:hover, .ac:hover, .cmd:hover {
+[data-genre="card"]:hover {
     transform: scale(1.02); 
     width: 350px;
     transform-origin: left;
     z-index: 3;
     box-shadow: 0px 10px 30px var(--glow-color);
 }
-.movie:hover img, .hr:hover img, .ac:hover img, .cmd:hover img {
+[data-genre="card"]:hover img {
     width: 200px;
     border-radius: 0 10px 10px 0;
 }
 
-.movie::after, .hr::after, .ac::after, .cmd::after {
+[data-genre="card"]::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -97,7 +97,7 @@ h3{
     transition: opacity 0.3s ease-in-out;
 }
 
-.movie:hover::after, .hr:hover::after, .ac:hover::after, .cmd:hover::after {
+[data-genre="card"]:hover::after {
     opacity: 1;
 }
 

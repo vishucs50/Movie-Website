@@ -5,7 +5,6 @@ let form = document.querySelector('#form')
 let moviecontainer = document.querySelector('#moviecontainer')
 form.addEventListener("submit", function (e) {
     e.preventDefault();
-    loadPage(searchBox.value)
     webseries(searchBox.value)
 
 })
@@ -26,6 +25,7 @@ let webseries = async (name) => {
             let imgSrc = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
             let div = document.createElement('div');
             div.classList.add('movie-card')
+            div.setAttribute('data-genre','doubleclick');
             div.innerHTML = `
                         <img src="${imgSrc}" alt="Movie Poster">
                         <h2 data-color="glow">"${item.title}"</h2>

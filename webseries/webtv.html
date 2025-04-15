@@ -1,85 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TV Shows</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="search.css">
-    <link rel="stylesheet" href="slider.css">
-    <link rel="stylesheet" href="style.css">
-  
-</head>
+    <link rel="stylesheet" href="search.css" />
+    <link rel="stylesheet" href="slider.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="movietemplate.css">
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="navbar">
-            <h1 class="logo">ScreenScape</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home" onclick="loadPage('home')">Home</a></li>
-                    <li><a href="#popular" onclick="loadPage('popular')">Popular</a></li>
-                    <li><a href="#">Genres</a></li>
-                    <li class="theme-container">
-                        <a href="#">Themes <i id="arrow" class='bx bx-chevron-down'></i></a>
-                        <div class="theme-dropdown" data-color="glow">
-                            
-                            <button onclick="changeGlowColor('glow-orange')">Orange</button>
-                            <button onclick="changeGlowColor('glow-lightblue')">Blue</button>
-                            <button onclick="changeGlowColor('glow-purple')">Purple</button>
-                            <button onclick="changeGlowColor('glow-red')">Red</button>
-                        </div>
-                    </li>
-                    <li><a href="#contact" onclick="loadPage('contact')">Contact</a></li>
-                </ul>
-            </nav>
+      <div class="navbar" data-con="navbar">
+        <h1 class="logo">ScreenScape</h1>
+        <nav>
+          <ul class="nav-links" data-con="nav-links">
+            <li><a href="#home" onclick="loadPage('home')">Home</a></li>
+            <li>
+              <a href="#popular" onclick="loadPage('popular')">Popular</a>
+            </li>
+            <li class="genre-container" data-con="genres">
+              <a href="#"
+                >Genres <i id="arrow" class="bx bx-chevron-down"></i
+              ></a>
+              <div class="genre-dropdown" data-color="glow">
+                <a href="#action">Action</a>
+                <a href="#adventure">Adventure</a>
+                <a href="#animation">Animation</a>
+                <a href="#comedy">Comedy</a>
+                <a href="#crime">Crime</a>
+                <a href="#documentary">Documentary</a>
+                <a href="#drama">Drama</a>
+                <a href="#family">Family</a>
+                <a href="#fantasy">Fantasy</a>
+                <a href="#history">History</a>
+                <a href="#horror">Horror</a>
+                <a href="#music">Music</a>
+                <a href="#mystery">Mystery</a>
+                <a href="#romance">Romance</a>
+                <a href="#tvmovie">TV Movie</a>
+                <a href="#thriller">Thriller</a>
+                <a href="#war">War</a>
+                <a href="#western">Western</a>
+              </div>
+            </li>
+            <li class="theme-container" data-con="theme">
+              <a href="#"
+                >Themes <i id="arrow" class="bx bx-chevron-down"></i
+              ></a>
+              <div class="theme-dropdown" data-color="glow">
+                <button onclick="changeGlowColor('glow-orange')">Orange</button>
+                <button onclick="changeGlowColor('glow-lightblue')">
+                  Blue
+                </button>
+                <button onclick="changeGlowColor('glow-purple')">Purple</button>
+                <button onclick="changeGlowColor('glow-red')">Red</button>
+              </div>
+            </li>
+            <li>
+              <a href="#contact" onclick="loadPage('contact')">Contact</a>
+            </li>
+          </ul>
+        </nav>
 
-            <!-- Search Form -->
-            <form id="form">
-                <input id="search"  type="text" autocomplete="off" placeholder="Search Movie">
-                <button id="but"  type="submit"><i class='bx bx-search-alt-2'></i></button>  
-            </form>
+        <!-- Search Form -->
+        <form id="form" data-con="search">
+          <input
+            id="search"
+            type="text"
+            autocomplete="off"
+            placeholder="Search Movie"
+          />
+          <button id="but" type="submit">
+            <i class="bx bx-search-alt-2"></i>
+          </button>
+        </form>
 
-            <!-- Hamburger Button -->
-            <button class="hamburger" aria-label="Toggle navigation">
-                ☰
-            </button>
-        </div>
+        <!-- Hamburger Button -->
+        <button
+          class="hamburger"
+          aria-label="Toggle navigation"
+          data-con="hamburger"
+        >
+          ☰
+        </button>
+      </div>
     </header>
 
-    <div id="moviecontainer">
-        <div class="popular">
-            <h3>Popular Movies</h3>
-            <i data-dir="left" class='bx bxs-left-arrow'></i>
-            <div class="popularmov"></div>
-            <i data-dir="right" class='bx bxs-right-arrow'></i>
-        </div>
-        <div class="horror">
-            <h3>Horror Movies</h3>
-            <i data-dir="left" class='bx bxs-left-arrow'></i>
-            <div class="horrormov"></div>
-            <i data-dir="right" class='bx bxs-right-arrow'></i>
-        </div>
-        <div class="action">
-            <h3>Action Movies</h3>
-            <i data-dir="left" class='bx bxs-left-arrow'></i>
-            <div class="actionmov"></div>
-            <i data-dir="right" class='bx bxs-right-arrow'></i>
-        </div>
-        <div class="comedy">
-            <h3>Comedy Movies</h3>
-            <i data-dir="left" class='bx bxs-left-arrow'></i>
-            <div class="commov"></div>
-            <i data-dir="right" class='bx bxs-right-arrow'></i>
-        </div>
+    <div id="moviecontainer" data-con="container">
+      <div class="popular" data-genre="inner box">
+        <h3>Popular Movies</h3>
+        <i data-dir="left" class="bx bxs-left-arrow"></i>
+        <div class="popularmov" data-genre="movie-list"></div>
+        <i data-dir="right" class="bx bxs-right-arrow"></i>
+      </div>
+      <div class="horror" data-genre="inner box">
+        <h3>Horror Movies</h3>
+        <i data-dir="left" class="bx bxs-left-arrow"></i>
+        <div class="horrormov" data-genre="movie-list"></div>
+        <i data-dir="right" class="bx bxs-right-arrow"></i>
+      </div>
+      <div class="action" data-genre="inner box">
+        <h3>Action Movies</h3>
+        <i data-dir="left" class="bx bxs-left-arrow"></i>
+        <div class="actionmov" data-genre="movie-list"></div>
+        <i data-dir="right" class="bx bxs-right-arrow"></i>
+      </div>
+      <div class="comedy" data-genre="inner box">
+        <h3>Comedy Movies</h3>
+        <i data-dir="left" class="bx bxs-left-arrow"></i>
+        <div class="commov" data-genre="movie-list"></div>
+        <i data-dir="right" class="bx bxs-right-arrow"></i>
+      </div>
+      <div class="animation" data-genre="inner box">
+        <h3>Animated movies</h3>
+        <i data-dir="left" class="bx bxs-left-arrow"></i>
+        <div class="animov" data-genre="movie-list"></div>
+        <i data-dir="right" class="bx bxs-right-arrow"></i>
+      </div>
+      <div class="scific" data-genre="inner box">
+        <h3>Science fiction movies</h3>
+        <i data-dir="left" class="bx bxs-left-arrow"></i>
+        <div class="scifi" data-genre="movie-list"></div>
+        <i data-dir="right" class="bx bxs-right-arrow"></i>
+      </div>
     </div>
 
-    <script  src="search.js"></script>
+    <script src="search.js"></script>
     <script src="switch.js"></script>
     <script src="theme.js"></script>
-   
-</body>
+  </body>
 </html>
