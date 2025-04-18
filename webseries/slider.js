@@ -1,8 +1,11 @@
+require('dotenv').config();
+
+
 let popular=async()=>{
     try
     {
 
-        let response= await fetch('https://api.themoviedb.org/3/movie/popular?api_key=b2c8d6ce056bc1d972d350c0806bcd68');
+        let response= await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=b2c8d6ce056bc1d972d350c0806bcd68`);
         let data=await response.json();
         console.log(data);
         let popular=document.querySelector('.popularmov')
