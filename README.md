@@ -1,5 +1,5 @@
 # ScreenScape
-![Popular Image WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/popular.png)
+![Home Image WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/home.png)
 
 ## Features
 - Theme Change
@@ -8,9 +8,11 @@
 - Shows Trailer
 -responisve for tablet,phone,pc
 
+![Popular Image WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/popular.png)
 ![Detail Image WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/detail.png)
-![Theme Change WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/image.png)
-
+![Theme Change WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/themes.png)
+![Theme Change WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/genre.png)
+![Theme Change WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/responsive.png)
 ## Tech Stack
 - HTML
 - CSS
