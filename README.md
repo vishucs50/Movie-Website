@@ -6,6 +6,7 @@
 - Movie Recommendation based on Genre
 - Search Functionality
 - Shows Trailer
+-responisve for tablet,phone,pc
 
 ![Detail Image WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/detail.png)
 ![Theme Change WebPage](https://github.com/vishucs50/Movie-Website/blob/master/webseries/image.png)
@@ -15,4 +16,5 @@
 - CSS
 - Javascript
 - TMDB API
+-MovieDB API
 
